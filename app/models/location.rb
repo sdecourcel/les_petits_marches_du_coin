@@ -3,4 +3,7 @@ class Location < ApplicationRecord
 
   has_many :firms
   has_many :markets
+
+  validates :address, presence: true
+  validates :unique_name, presence: true
 end

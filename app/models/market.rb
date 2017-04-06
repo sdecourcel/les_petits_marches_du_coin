@@ -9,4 +9,8 @@ class Market < ApplicationRecord
   has_many :producers, source: :users, through: :producer_market_suppliers
   has_many :basket_managers, source: :users, through: :basket_market_suppliers
 
+  validates :week_day, presence: true
+  validates :start_time, presence: true
+  validates :stop_time, presence: true
+
 end
