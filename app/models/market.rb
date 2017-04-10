@@ -3,23 +3,14 @@ class Market < ApplicationRecord
   enum week_day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
 
   belongs_to :location
-  belongs_to :manager, class_name: 'User'
+  belongs_to :user
 
-  # -> { MarketSupplier.producer },
-  has_many :products_market_suppliers, class_name: "MarketSupplier", foreign_key: :market
-  # has_many :baskets_market_suppliers, -> { MarketSupplier.baskets_manager }, source: :market_suppliers, foreign_key: :market_id
-
-  # has_many :producer_suppliers, -> { MarketSupplier.producer }, source: :users, through: :market_suppliers
-  # has_many :baskets_manager_suppliers, -> { MarketSupplier.producer }, source: :users, through: :market_suppliers
-
-  # has_many :producer_market_suppliers,  -> { where role: :producer }, source: :market_suppliers
-  # has_many :basket_market_suppliers,  -> { where role: :basket_manager }, source: :market_suppliers
-
-  # has_many :producers, source: :users, through: :producer_market_suppliers
-  # has_many :basket_managers, source: :users, through: :basket_market_suppliers
+  has_many :market_suppliers
+  has_many :suppliers, through: :market_suppliers, class_name: "User"
 
   validates :week_day, presence: true
-  validates :start_time, presence: true
-  validates :stop_time, presence: true
-
+  validates :start_hour, presence: true
+  validates :start_min, presence: true
+  validates :stop_hour, presence: true
+  validates :stop_min, presence: true
 end

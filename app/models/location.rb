@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  belongs_to :owner, class_name: 'User', optional: true
+  belongs_to :user, optional: true
 
   has_many :firms
   has_many :markets

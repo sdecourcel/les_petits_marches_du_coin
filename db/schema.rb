@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406172935) do
+ActiveRecord::Schema.define(version: 20170410164327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,16 +41,15 @@ ActiveRecord::Schema.define(version: 20170406172935) do
     t.text     "unique_name"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["owner_id"], name: "index_locations_on_owner_id", using: :btree
+    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
   end
 
   create_table "market_suppliers", force: :cascade do |t|
     t.integer  "market_id",  null: false
     t.integer  "user_id",    null: false
-    t.integer  "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["market_id"], name: "index_market_suppliers_on_market_id", using: :btree
@@ -59,14 +58,16 @@ ActiveRecord::Schema.define(version: 20170406172935) do
 
   create_table "markets", force: :cascade do |t|
     t.integer  "location_id", null: false
-    t.integer  "manager_id",  null: false
+    t.integer  "user_id",     null: false
     t.integer  "week_day",    null: false
-    t.time     "start_time",  null: false
-    t.time     "stop_time",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "start_hour"
+    t.integer  "start_min"
+    t.integer  "stop_hour"
+    t.integer  "stop_min"
     t.index ["location_id"], name: "index_markets_on_location_id", using: :btree
-    t.index ["manager_id"], name: "index_markets_on_manager_id", using: :btree
+    t.index ["user_id"], name: "index_markets_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -102,10 +103,10 @@ ActiveRecord::Schema.define(version: 20170406172935) do
   add_foreign_key "firm_products", "products"
   add_foreign_key "firms", "locations"
   add_foreign_key "firms", "users"
-  add_foreign_key "locations", "users", column: "owner_id"
+  add_foreign_key "locations", "users"
   add_foreign_key "market_suppliers", "markets"
   add_foreign_key "market_suppliers", "users"
   add_foreign_key "markets", "locations"
-  add_foreign_key "markets", "users", column: "manager_id"
+  add_foreign_key "markets", "users"
   add_foreign_key "products", "products", column: "parent_id"
 end
