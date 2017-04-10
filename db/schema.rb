@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410164327) do
+ActiveRecord::Schema.define(version: 20170410165545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,15 +57,16 @@ ActiveRecord::Schema.define(version: 20170410164327) do
   end
 
   create_table "markets", force: :cascade do |t|
-    t.integer  "location_id", null: false
-    t.integer  "user_id",     null: false
-    t.integer  "week_day",    null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "start_hour"
-    t.integer  "start_min"
-    t.integer  "stop_hour"
-    t.integer  "stop_min"
+    t.integer  "location_id",                  null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "week_day",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "start_hour",                   null: false
+    t.integer  "start_min",                    null: false
+    t.integer  "stop_hour",                    null: false
+    t.integer  "stop_min",                     null: false
+    t.boolean  "market_place", default: false, null: false
     t.index ["location_id"], name: "index_markets_on_location_id", using: :btree
     t.index ["user_id"], name: "index_markets_on_user_id", using: :btree
   end

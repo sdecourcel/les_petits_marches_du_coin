@@ -1,0 +1,66 @@
+users:
+  - slug: market_manager
+    email: 'market_manager@gmail.com'
+    password: 'azerty'
+  #producteur qui propose aussi des paniers
+  - slug: producer
+    email: 'producer@gmail.com'
+    password: 'azerty'
+  #responsable de paniers
+  - slug: baskets_manager
+    email: 'baskets_manager@gmail.com'
+    password: 'azerty'
+
+locations:
+  - slug: cours_medoc
+    address: '10 cours du Medoc, 33000 Bordeaux'
+    unique_name: 'cours_medoc'
+  - slug: cours_pasteur
+    address: '20 cours Pasteur, 33000 Bordeaux'
+    unique_name: 'cours_pasteur'
+
+markets:
+  # market place uniquement
+  - slug: market_only
+    user_slug: market_manager
+    location_slug: cours_medoc
+    market_place: true
+    week_day: :monday
+    start_hour: 17
+    start_min: 0
+    stop_hour: 19
+    stop_min: 30
+  # market place + retrait de paniers
+  - slug: market_baskets
+    user_slug: market_manager
+    location_slug: cours_medoc
+    market_place: true
+    week_day: :tuesday
+    start_hour: 17
+    start_min: 0
+    stop_hour: 19
+    stop_min: 30
+  #retrait de paniers uniquement
+  - slug: baskets_only
+    user_slug: market_manager
+    location_slug: cours_pasteur
+    market_place: false
+    week_day: :wednesday
+    start_hour: 17
+    start_min: 0
+    stop_hour: 19
+    stop_min: 30
+
+market_suppliers:
+  - user_slug: producer
+    market_slug: market_only
+  - user_slug: producer
+    market_slug: market_baskets
+  - user_slug: baskets_manager
+    market_slug: market_baskets
+  - user_slug: baskets_manager
+    market_slug: baskets_only
+
+
+
+

@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :locations
 
   has_many :market_suppliers
-  has_many :sale_markets, through: :market_suppliers, class_name: "Market"
+  has_many :sale_markets, through: :market_suppliers, source: :markets
 end
