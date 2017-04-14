@@ -18,6 +18,9 @@ locations:
   - slug: cours_pasteur
     address: '20 cours Pasteur, 33000 Bordeaux'
     unique_name: 'cours_pasteur'
+  - slug: cestas
+    address: 'chemin Dubourdieu, 33610 Cestas'
+    unique_name: 'dubourdieu_cestas'
 
 markets:
   # market place uniquement
@@ -60,6 +63,40 @@ market_suppliers:
     market_slug: market_baskets
   - user_slug: baskets_manager
     market_slug: baskets_only
+
+firms:
+  # market place uniquement
+  - slug: producer_firm
+    user_slug: producer
+    location_slug: cestas
+    name: Lutin Jardin
+    description: Maraîcher agriculture biologique
+  - slug: ruche_chartrons
+    user_slug: baskets_manager
+    location_slug: cours_pasteur
+    name: Ruche des ruche_chartrons
+    description: La ruche qui dit oui
+
+products:
+  - slug: vegetables
+    name: Légumes
+    category_level: :category
+  - slug: fresh_vegetables
+    name: Légumes frais
+    category_level: :sub_category
+    parent_slug: vegetables
+  - slug: baskets
+    name: paniers
+    category_level: :category
+
+firm_products:
+  - firm_slug: producer_firm
+    product_slug: fresh_vegetables
+  - firm_slug: ruche_chartrons
+    product_slug: baskets
+
+
+
 
 
 

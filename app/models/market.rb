@@ -5,8 +5,8 @@ class Market < ApplicationRecord
   belongs_to :location
   belongs_to :user
 
-  has_many :market_suppliers
-  has_many :suppliers, through: :market_suppliers, class_name: "User"
+  has_many :market_suppliers, dependent: :destroy
+  has_many :suppliers, through: :market_suppliers, source: :user, foreign_key: "user_id"
 
   validates :week_day, presence: true
   validates :start_hour, presence: true

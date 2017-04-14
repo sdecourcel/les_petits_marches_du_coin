@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :firms
-  has_many :markets
   has_many :locations
+  has_many :markets
 
   has_many :market_suppliers
-  has_many :sale_markets, through: :market_suppliers, source: :markets
+  has_many :sale_markets, through: :market_suppliers, source: :market, foreign_key: "market_id"
 end
