@@ -17,7 +17,7 @@ puts 'Creating users...'
 
 users = {} # slug => User
 sample["users"].each do |user|
-  users[user["slug"]] = User.new user.slice("email", "password")
+  users[user["slug"]] = User.new user.slice("email", "password", "general_conditions")
   if users[user["slug"]].save!
     puts "id: #{users[user["slug"]].id} OK"
   else
