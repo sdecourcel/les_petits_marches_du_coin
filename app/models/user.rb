@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_many :market_suppliers
   has_many :sale_markets, through: :market_suppliers, source: :market, foreign_key: "market_id"
+
+  validates :general_conditions, acceptance: true
 end

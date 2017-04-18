@@ -18,9 +18,13 @@ locations:
   - slug: cours_medoc
     address: '10 cours du Medoc, 33000 Bordeaux'
     unique_name: 'cours_medoc'
+    user_slug: market_manager
+    owner: true
   - slug: cours_pasteur
     address: '20 cours Pasteur, 33000 Bordeaux'
     unique_name: 'cours_pasteur'
+    user_slug: market_manager
+    owner: true
   - slug: cestas
     address: 'chemin Dubourdieu, 33610 Cestas'
     unique_name: 'dubourdieu_cestas'
