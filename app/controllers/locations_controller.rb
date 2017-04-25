@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
     # byebug
     @location = Location.new
     respond_to do |format|
-      format.html { render :new}
+      format.html { render :new, layout: false}
       format.js  # <-- will render `app/views/locations/new.js.erb`
     end
   end
@@ -22,7 +22,7 @@ class LocationsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new }
+        format.html { render 'users/show' }
         format.js  # <-- idem
       end
     end

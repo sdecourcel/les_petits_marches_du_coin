@@ -1,6 +1,8 @@
-<% content_for :after_js do %>
+<h1>Les petits marchés du coin</h1>
 
-  <div id='map' style='width: 1200px; height: 600px;'></div>
+<div id='map' style='width: 1200px; height: 600px;'></div>
+
+<% content_for :after_js do %>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlY291cmNlbCIsImEiOiJjajFnOWVudHgwMDA5MzJsZ2Z0bmk1eW96In0.ZOJPFawSZnbpJC3JilwkYg';
     var map = new mapboxgl.Map({
@@ -10,9 +12,24 @@
         zoom: 13,
         hash: true
     });
-    var marker = new mapboxgl.Marker();
-      marker.setLngLat([-0.560759, 44.859291])
-      marker.addTo(map);
+
+    map.on('load', function(e) {
+  // Add the data to your map as a layer
+      map.addLayer({
+        id: 'locations',
+        type: 'symbol',
+        // Add a GeoJSON source containing place coordinates and information.
+        source: {
+          type: 'geojson',
+          data: <%= raw @geojson_markets.to_json %>
+        },
+        layout: {
+          'icon-image': 'shop-15', //'/assets/images/marche_noun_627752_cc',
+          'icon-allow-overlap': true,
+        }
+      });
+    });
+
   </script>
 
 <% end %>
