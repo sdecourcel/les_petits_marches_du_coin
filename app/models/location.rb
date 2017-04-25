@@ -12,11 +12,11 @@ class Location < ApplicationRecord
   after_validation :underscorize, if: :address_changed?
 
   scope :market_places, -> { joins(:markets).where({ markets: { market_place: true } }) }
+  scope :basket_places, -> { joins(markets: { suppliers: { firms: :products } } ).where({ products: { name: 'Paniers' } }) }
 
   private
 
   def underscorize
-    byebug
     self.unique_name = self.address.parameterize(separator: '_')
   end
 

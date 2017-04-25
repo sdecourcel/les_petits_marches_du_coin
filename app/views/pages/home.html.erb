@@ -16,7 +16,20 @@
     map.on('load', function(e) {
   // Add the data to your map as a layer
       map.addLayer({
-        id: 'locations',
+        id: 'basket_locations',
+        type: 'symbol',
+        // Add a GeoJSON source containing place coordinates and information.
+        source: {
+          type: 'geojson',
+          data: <%= raw @geojson_baskets.to_json %>
+        },
+        layout: {
+          'icon-image': 'shop-15', //'/assets/images/marche_noun_627752_cc',
+          'icon-allow-overlap': true,
+        }
+      });
+      map.addLayer({
+        id: 'market_locations',
         type: 'symbol',
         // Add a GeoJSON source containing place coordinates and information.
         source: {
@@ -24,7 +37,7 @@
           data: <%= raw @geojson_markets.to_json %>
         },
         layout: {
-          'icon-image': 'shop-15', //'/assets/images/marche_noun_627752_cc',
+          'icon-image': 'theatre-15', //'/assets/images/marche_noun_627752_cc',
           'icon-allow-overlap': true,
         }
       });
