@@ -4,11 +4,13 @@
       <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, required: false, autofocus: true %>
-    <%= f.input :address, required: true, autofocus: true %>
+    <%= f.input :name, placeholder: "Donnez un nom à cette adresse", label: false, required: false, autofocus: true %>
+    <%= f.input :address, placeholder: "Adresse", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
   </div>
 
   <div>
     <%= f.button :submit, "Sauvegarder" %>
   </div>
 <% end %>
+
+

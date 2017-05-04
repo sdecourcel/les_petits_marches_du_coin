@@ -1,16 +1,10 @@
 <h1>Les petits marchés du coin</h1>
 
-<div>
-  <%= simple_form_for :search, method: :get do |f| %>
-    <%= f.input :address, as: :string, input_html: {id: "address"}, autocomplete: "on", label:false %>
-  <% end %>
-</div>
-
 <div id='map' style='width: 1200px; height: 600px;'></div>
 
 <% content_for :after_js do %>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlY291cmNlbCIsImEiOiJjajFnOWVudHgwMDA5MzJsZ2Z0bmk1eW96In0.ZOJPFawSZnbpJC3JilwkYg';
+    mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
@@ -47,23 +41,22 @@
           'icon-allow-overlap': true,
         }
       });
+
+      // User Geolocation
+      var user_location = geoCodeUser();
+      console.log(user_location);
+      if (user_location === undefined)
+        { user_location = 'Rechercher une adresse'}
+
+
+      // Search address control
+      map.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        placeholder: user_location
+      }));
     });
 
-    function initialize() {
-      var input = document.getElementById('address');
-      var autocomplete = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-      });
-    }
-    var input = document.getElementById('address');
-    var autocomplete = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-      });
-    map.addControl(autocomplete);
-    // google.maps.event.addDomListener(window, 'load', initialize);
-
   </script>
-
 <% end %>
 
 
