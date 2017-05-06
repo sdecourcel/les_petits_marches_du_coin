@@ -1,4 +1,4 @@
-$('#new_location').html("<%= j render 'locations/new', layout: false %>");
+$('#new_location').html("<%= j render template: 'locations/new.html.erb', layout: false %>");
 
 // address autocomplete
 // mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
