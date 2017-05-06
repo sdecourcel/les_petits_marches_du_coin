@@ -1,6 +1,6 @@
 <% if @location.errors.any? %>
   // Render new location form with errors
-  $('#new_location').html("<%= j render 'locations/new', location: @location %>");
+  $('#new_location').html("<%= j render template: 'locations/new.html.erb', location: @location, layout: false %>");
 <% else %>
   // Create a paragraph for the new location. But hide it.
   var new_location = $("<%= j render 'locations/show', location: @location %>").hide();

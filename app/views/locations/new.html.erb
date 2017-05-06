@@ -1,17 +1,22 @@
-<h2>Nouvelle adresse</h2>
+<div class="container">
+  <h2>Nouvelle adresse</h2>
 
-<%= simple_form_for @location, url: locations_path, method: "POST", remote: true do |f| %>
-      <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name, placeholder: "Donnez un nom à cette adresse", label: false, required: false, autofocus: true %>
-    <%= f.input :address, placeholder: "Adresse", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= simple_form_for @location, url: locations_path, method: "POST", remote: true do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :name, placeholder: "Donnez un nom à cette adresse", label: false, required: false, autofocus: true %>
+          <%= f.input :address, placeholder: "Adresse", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
+        </div>
+        <div>
+          <%= f.button :submit, "Sauvegarder" %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div>
-    <%= f.button :submit, "Sauvegarder" %>
-  </div>
-<% end %>
 
 
 
