@@ -12,22 +12,11 @@
 
     // Add controls to map
     map.on('load', function(e) {
-      // User Geolocation
-      var user_location = geoCodeUser();
-      console.log(user_location);
-      if (user_location === undefined)
-        { user_location = 'Rechercher une adresse'}
-
-      // Search address control
-      map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        placeholder: user_location
-      }));
 
       // User Geolocation Button
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
-            enableHighAccuracy: true
+          enableHighAccuracy: true
         }
       }));
 
@@ -44,4 +33,21 @@
 
     return map;
 
-  }
+  };
+
+  // User Geolocation
+  // function geoCodeUser() {
+  //   return user_location;
+  // };
+
+  function createGeocoderControl(user_location) {
+    console.log(user_location);
+    if (user_location === undefined)
+      { user_location = 'Rechercher une adresse'};
+
+    // Search address control
+    return (new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      placeholder: user_location
+    }));
+  };

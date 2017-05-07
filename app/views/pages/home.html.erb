@@ -47,6 +47,15 @@
       });
     });
 
+    // Geocode user location
+    var user_location = geoCodeUser();
+
+    // Create geocoder control
+    var geocoderControl = createGeocoderControl(user_location);
+
+    // Add geocder control to map
+    map.addControl(geocoderControl);
+
   </script>
 <% end %>
 

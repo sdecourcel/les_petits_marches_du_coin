@@ -13,7 +13,14 @@
   <div>
     <%= link_to "Ajouter une adresse", new_location_path, remote: true %>
   </div>
-  <div id="new_location"></div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="new_location"></div>
+    </div>
+    <div class="col-sm-6">
+      <div id='location_map' style='width: 600px; height: 300px;'></div>
+    </div>
+  </div>
 </div>
 
 

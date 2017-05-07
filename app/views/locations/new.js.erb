@@ -1,7 +1,6 @@
 $('#new_location').html("<%= j render template: 'locations/new.html.erb', layout: false %>");
 
-// address autocomplete
-// mapboxgl.accessToken = '<%= ENV['MAPBOX_API_KEY'] %>';
+
 // var geocoder = new MapboxGeocoder({
 //     accessToken: mapboxgl.accessToken,
 //     placeholder: 'Nouvelle adresse'
@@ -9,3 +8,14 @@ $('#new_location').html("<%= j render template: 'locations/new.html.erb', layout
 // document.getElementById('address').appendChild(geocoder.onAdd(address));
 
 
+// Create basic map
+var map = initializeMap('location_map');
+
+// Geocode user location
+var user_location = geoCodeUser();
+
+// Create geocoder control
+var geocoderControl = createGeocoderControl(user_location);
+
+// Add geocder control to map
+map.addControl(geocoderControl);
