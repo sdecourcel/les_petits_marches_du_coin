@@ -1,22 +1,35 @@
 <div class="container">
+
+  <!--  Current user identity -->
   <div><%= current_user.email %></div>
+
+  <!--  Personal addresses -->
   <h2>Mes adresses personnelles</h2>
-  <div class="row">
-    <div id="personal_locations">
-      <% @personal_locations.each do |location| %>
-        <div>
+  <div id="personal_locations">
+    <% @personal_locations.each do |location| %>
+      <div class="row">
+        <div class="col-sm-6">
           <%= render 'locations/show', location: location %>
         </div>
-      <% end %>
-    </div>
+        <!--  With map -->
+        <div class="col-sm-6">
+          <div class='static_location_map' style='width: 400px; height: 200px;'></div>
+        </div>
+      </div>
+    <% end %>
   </div>
+
+  <!--  Add a new personal address -->
   <div>
     <%= link_to "Ajouter une adresse", new_location_path, remote: true %>
   </div>
+
+  <!--  New location form -->
   <div class="row">
     <div class="col-sm-6">
       <div id="new_location"></div>
     </div>
+    <!--  With map -->
     <div class="col-sm-6">
       <div id='location_map' style='width: 600px; height: 300px;'></div>
     </div>

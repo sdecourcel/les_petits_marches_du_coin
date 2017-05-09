@@ -17,5 +17,19 @@ var user_location = geoCodeUser();
 // Create geocoder control
 var geocoderControl = createGeocoderControl(user_location);
 
-// Add geocder control to map
+// Add geocoder control to map
 map.addControl(geocoderControl);
+//console.log(geocoderControl);
+
+// Display lng/lat when click mouse on map
+map.on('mouseclick', function (e) {
+    document.getElementById('coord').innerHTML =
+        // e.lngLat is the longitude, latitude geographical position of the event
+        JSON.stringify(e.lngLat);
+});
+
+// When value of geocoder control selected in autocomplete list
+// => copy value in address input - and vice versa
+
+// Add control to address input : desperatly fails
+// document.getElementById('address').appendChild(geocoderControl.onAdd(map));
