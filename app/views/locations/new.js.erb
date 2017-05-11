@@ -22,10 +22,13 @@ map.addControl(geocoderControl);
 //console.log(geocoderControl);
 
 // Display lng/lat when click mouse on map
-map.on('mouseclick', function (e) {
-    document.getElementById('coord').innerHTML =
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
+map.on('click', function (e) {
+  document.getElementById('lat').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lat);
+  document.getElementById('lng').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lng);
 });
 
 // When value of geocoder control selected in autocomplete list

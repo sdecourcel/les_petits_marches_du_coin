@@ -17,6 +17,14 @@
     var map = initializeMap('map');
 
     map.on('load', function(e) {
+
+      // Add personal icon to map : still fails
+      // map.loadImage('/app/assets/images/noun_962579_cc.png', (error, image) => {
+      //     if (error) throw error;
+      //     map.addImage('basket', image);
+      // });
+      // map.addImage('basket', '/app/assets/images/noun_962579_cc.svg', {width: 50, height: 50});
+
       // Add basket-markets locations to map
       map.addLayer({
         id: 'basket_locations',

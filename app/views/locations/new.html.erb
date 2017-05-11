@@ -7,7 +7,13 @@
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :name, placeholder: "Donnez un nom à cette adresse", label: false, required: false, autofocus: true %>
-          <%= f.input :address, placeholder: "Adresse complète", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
+          <div class="form-inline">
+            <p>Latitude</p>
+            <div id="lat"></div>
+            <p>Longitude</p>
+            <div id="lng"></div>
+          </div>
+          <%= f.input :address, placeholder: "Adresse détaillée", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
         </div>
         <div>
           <%= f.button :submit, "Sauvegarder" %>
