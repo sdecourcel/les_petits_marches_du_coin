@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
 
-  before_action :set_location, only: [:update]
+  # before_action :set_location, only: [:update]
 
   def new
     # byebug
@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
     # byebug
     if @location.save
       respond_to do |format|
-        format.html { redirect_to user_path(current_user) }
+        format.html { redirect_to account_locations_path }
         format.js  # <-- will render `app/views/locations/create.js.erb`
       end
     else
