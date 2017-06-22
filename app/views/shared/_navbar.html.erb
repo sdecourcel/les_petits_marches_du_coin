@@ -32,13 +32,23 @@
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to account_firms_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Mes entreprises") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to account_supplier_markets_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Les marchés que je fournis") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to account_leader_markets_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Les marchés que je gère") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to account_locations_path do %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Mes adresses personnelles") %>
               <% end %>
             </li>
             <li>

@@ -9,8 +9,8 @@ Product.destroy_all
 Firm.destroy_all
 MarketSupplier.destroy_all
 Market.destroy_all
-User.destroy_all
 Location.destroy_all
+User.destroy_all
 
 #########  USERS  #########
 puts 'Creating users...'
@@ -32,7 +32,8 @@ puts 'Creating locations...'
 
 locations = {} # slug => Location
 sample["locations"].each do |location|
-  locations[location["slug"]] = Location.new location.slice("address", "unique_name")
+  user = users[location["user_slug"]]
+  locations[location["slug"]] = Location.new location.slice("address", "unique_name", "owner").merge(user: user)
   if locations[location["slug"]].save!
     puts "id: #{locations[location["slug"]].id} OK"
   else
@@ -90,12 +91,8 @@ puts 'Creating products...'
 
 products = {} # slug => Product
 sample["products"].each do |product|
-  parent = products[product["parent_slug"]] unless product["parent_slug"].nil?
-  if parent.nil?
-    products[product["slug"]] = Product.new product.slice("name", "category_level")
-  else
-    products[product["slug"]] = Product.new product.slice("name", "category_level").merge(parent: parent)
-  end
+  parent = products[product["parent_slug"]]
+  products[product["slug"]] = Product.new product.slice("name", "category_level").merge(parent: parent)
   if products[product["slug"]].save!
     puts "id: #{products[product["slug"]].id} OK"
   else

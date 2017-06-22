@@ -1,15 +1,70 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Les petits marchés du coin</h1>
+
+      <div id='map' style='width: 1200px; height: 600px;'></div>
+    </div>
+  </div>
+</div>
+
+
 <% content_for :after_js do %>
-
-  <div id='map' style='width: 400px; height: 300px;'></div>
   <script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlY291cmNlbCIsImEiOiJjajFnOWVudHgwMDA5MzJsZ2Z0bmk1eW96In0.ZOJPFawSZnbpJC3JilwkYg';
-  var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9'
-  });
-  </script>
 
+    // Create basic map
+    var map = initializeMap('map');
+
+    map.on('load', function(e) {
+
+      // Add personal icon to map : still fails
+      // map.loadImage('/app/assets/images/noun_962579_cc.png', (error, image) => {
+      //     if (error) throw error;
+      //     map.addImage('basket', image);
+      // });
+      // map.addImage('basket', '/app/assets/images/noun_962579_cc.svg', {width: 50, height: 50});
+
+      // Add basket-markets locations to map
+      map.addLayer({
+        id: 'basket_locations',
+        type: 'symbol',
+        // Add a GeoJSON source containing place coordinates and information.
+        source: {
+          type: 'geojson',
+          data: <%= raw @geojson_baskets.to_json %>
+        },
+        layout: {
+          'icon-image': 'shop-15', //'/assets/images/marche_noun_627752_cc',
+          'icon-allow-overlap': true,
+        }
+      });
+      // Add market locations to map
+      map.addLayer({
+        id: 'market_locations',
+        type: 'symbol',
+        // Add a GeoJSON source containing place coordinates and information.
+        source: {
+          type: 'geojson',
+          data: <%= raw @geojson_markets.to_json %>
+        },
+        layout: {
+          'icon-image': 'theatre-15', //'/assets/images/marche_noun_627752_cc',
+          'icon-allow-overlap': true,
+        }
+      });
+    });
+
+    // Geocode user location
+    var user_location = geoCodeUser();
+
+    // Create geocoder control
+    var geocoderControl = createGeocoderControl(user_location);
+
+    // Add geocder control to map
+    map.addControl(geocoderControl);
+
+  </script>
 <% end %>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+

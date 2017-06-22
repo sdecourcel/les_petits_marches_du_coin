@@ -1,0 +1,38 @@
+$('#new_location').html("<%= j render 'locations/new' %>");
+
+
+// var geocoder = new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken,
+//     placeholder: 'Nouvelle adresse'
+//   });
+// document.getElementById('address').appendChild(geocoder.onAdd(address));
+
+
+// Create basic map
+var map = initializeMap('location_map');
+
+// Geocode user location
+var user_location = geoCodeUser();
+
+// Create geocoder control
+var geocoderControl = createGeocoderControl(user_location);
+
+// Add geocoder control to map
+map.addControl(geocoderControl);
+//console.log(geocoderControl);
+
+// Display lng/lat when click mouse on map
+map.on('click', function (e) {
+  document.getElementById('lat').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lat);
+  document.getElementById('lng').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lng);
+});
+
+// When value of geocoder control selected in autocomplete list
+// => copy value in address input - and vice versa
+
+// Add control to address input : desperatly fails
+// document.getElementById('address').appendChild(geocoderControl.onAdd(map));

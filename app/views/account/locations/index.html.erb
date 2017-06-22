@@ -1,0 +1,29 @@
+<div class="container">
+
+  <!--  Current user identity -->
+  <div><%= current_user.email %></div>
+
+  <!--  Personal addresses -->
+  <h2>Mes adresses personnelles</h2>
+  <div id="personal_locations">
+    <div class="row">
+      <%= render partial: 'locations/location', collection: @personal_locations, as: :location %>
+    </div>
+  </div>
+
+  <!--  Add a new personal address -->
+  <div>
+    <%= link_to "Ajouter une adresse", new_location_path, remote: true %>
+  </div>
+
+  <!--  New location form -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="new_location"></div>
+    </div>
+    <!--  With map -->
+    <div class="col-sm-6">
+      <div id='location_map' style='width: 600px; height: 300px;'></div>
+    </div>
+  </div>
+</div>

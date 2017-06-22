@@ -1,0 +1,26 @@
+<div class="container">
+
+  <!--  Current user identity -->
+  <div><%= current_user.email %></div>
+
+  <!--  Add a new firm/market/personal address -->
+  <div>
+    <%= link_to "Ajouter une entreprise", new_firm_path, remote: true %>
+  </div>
+
+  <!--  Personal addresses -->
+  <h2>Mes entreprises</h2>
+  <div>
+    <% @firms.each do |firm| %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= render 'firms/show', firm: firm %>
+        </div>
+        <!--  With map -->
+        <div class="col-sm-6">
+          <div class='static_location_map' style='width: 400px; height: 200px;'></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
