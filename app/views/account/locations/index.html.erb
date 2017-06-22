@@ -6,17 +6,9 @@
   <!--  Personal addresses -->
   <h2>Mes adresses personnelles</h2>
   <div id="personal_locations">
-    <% @personal_locations.each do |location| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= render 'locations/show', location: location %>
-        </div>
-        <!--  With map -->
-        <div class="col-sm-6">
-          <div class='static_location_map' style='width: 400px; height: 200px;'></div>
-        </div>
-      </div>
-    <% end %>
+    <div class="row">
+      <%= render partial: 'locations/location', collection: @personal_locations, as: :location %>
+    </div>
   </div>
 
   <!--  Add a new personal address -->
