@@ -1,0 +1,10 @@
+<div class="container">
+
+  <!--  Current user identity -->
+  <div><%= current_user.email %></div>
+
+  <h2>Les marchés que je fournis</h2>
+  <div>
+    <%= render partial: 'markets/market', collection: @markets, as: :market %>
+  </div>
+</div>

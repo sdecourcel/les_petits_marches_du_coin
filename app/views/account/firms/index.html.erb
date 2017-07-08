@@ -11,16 +11,6 @@
   <!--  Personal addresses -->
   <h2>Mes entreprises</h2>
   <div>
-    <% @firms.each do |firm| %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= render 'firms/show', firm: firm %>
-        </div>
-        <!--  With map -->
-        <div class="col-sm-6">
-          <div class='static_location_map' style='width: 400px; height: 200px;'></div>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: 'firms/firm', collection: @firms, as: :firm %>
   </div>
 </div>

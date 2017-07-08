@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   # resources :users, only: [:show, :edit, :update]
   resources :locations, only: [:new, :create]
+  resources :firms, only: [:new, :create]
 
-  resources :markets, only: [:show]
+  resources :markets, only: [:new, :create, :show]
+
 
   namespace :account do
     resources :locations, only: [:index]

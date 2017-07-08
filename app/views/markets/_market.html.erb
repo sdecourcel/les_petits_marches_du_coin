@@ -1,0 +1,13 @@
+<div class="col-sm-3">
+  <h3><%= market.week_day %></h3>
+  <p><%= market.start_hour %>h<%= market.start_min %></p>
+  <p><%= market.stop_hour %>h<%= market.stop_min %></p>
+</div>
+<div class="col-sm-3">
+  <h3><%= market.location.name %></h3>
+  <p><%= market.location.address %></p>
+</div>
+<!--  With map -->
+<div class="col-sm-6">
+  <div class='static_location_map' style='width: 400px; height: 200px;'></div>
+</div>
