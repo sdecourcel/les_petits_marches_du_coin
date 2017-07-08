@@ -1,2 +1,14 @@
-<h3><%= firm.name %></h3>
-<p><%= firm.description %></p>
+<div class="col-sm-3">
+  <h3><%= firm.name %></h3>
+  <p><%= firm.description %></p>
+</div>
+<div class="col-sm-3">
+  <h3><%= firm.location.name %></h3>
+  <p><%= firm.location.address %></p>
+</div>
+<!--  With map -->
+<div class="col-sm-6">
+  <div class='static_location_map' style='width: 400px; height: 200px;'></div>
+</div>
+
+
