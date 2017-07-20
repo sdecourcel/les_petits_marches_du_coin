@@ -1,0 +1,15 @@
+<% if @location.errors.any?%>
+  // Render new location form with errors
+  $('#new_firm').html("<%= j render template: 'firms/new.html.erb', firm: @firm, location: @location, layout: false %>");
+<% else %>
+  // Create a paragraph for the new location. But hide it.
+  var new_firm = $("<%= j render 'firms/firm', location: @location, firm: @location.firms.first %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#firms').append(new_firm);
+  // Show the new review with an animation!
+  new_firm.slideDown();
+  // Reset the form
+  $('#new_firm').hide();
+  // Hide map
+  // $('#location_map').hide();
+<% end %>

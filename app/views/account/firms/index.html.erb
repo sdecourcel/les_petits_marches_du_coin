@@ -8,9 +8,19 @@
     <%= link_to "Ajouter une entreprise", new_firm_path, remote: true %>
   </div>
 
-  <!--  Personal addresses -->
   <h2>Mes entreprises</h2>
-  <div>
-    <%= render partial: 'firms/firm', collection: @firms, as: :firm %>
+  <div id="firms">
+    <div class="row">
+      <div>
+        <%= render partial: 'firms/firm', collection: @firms, as: :firm %>
+      </div>
+    </div>
+  </div>
+  <!--  New firm form -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="new_firm"></div>
+    </div>
   </div>
 </div>
+

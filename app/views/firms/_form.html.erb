@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Nouvelle entreprise</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= simple_form_for location, url: location_firm_path, method: "POST", remote: true do |f| %>
+        <%= f.error_notification %>
+
+        <div class="firm-form">
+
+          <%= f.simple_fields_for :firms do |firm| %>
+            <br>
+            <%= render 'firms/firm_fields', f: firm %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association f, :firms do %>
+              <h4><i class="fa fa-plus" aria-hidden="true"></i></h4>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-inputs">
+          <%= f.input :address, placeholder: "Adresse détaillée", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
+        </div>
+
+        <div>
+          <%= f.button :submit, "Sauvegarder" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

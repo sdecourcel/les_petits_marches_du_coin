@@ -1,0 +1,7 @@
+<div class="nested-fields form-inputs">
+  <%= f.input :name, placeholder: "Donnez un nom à cette entreprise", label: false, required: false, autofocus: true %>
+  <%= f.input :description, placeholder: "Description", label: false, input_html: { id: 'description'}, required: false, autofocus: true %>
+  <%= f.input :user_id, input_html: { value: current_user.id, class: "hidden"}, label: false %>
+
+
+</div>

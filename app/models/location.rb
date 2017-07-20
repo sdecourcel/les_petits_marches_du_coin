@@ -1,8 +1,10 @@
 class Location < ApplicationRecord
   belongs_to :user, optional: true
 
-  has_many :firms
+  has_many :firms, inverse_of: :location
   has_many :markets
+
+  accepts_nested_attributes_for :firms, reject_if: :all_blank, allow_destroy: true
 
   validates :address, presence: true
   # validates :unique_name, presence: true, uniqueness: true
