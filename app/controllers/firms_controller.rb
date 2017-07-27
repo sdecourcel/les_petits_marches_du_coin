@@ -13,10 +13,15 @@ class FirmsController < ApplicationController
   end
 
   def create
+    #binding.pry
+    address = params[:firm][:location][:address]
+    @location = Location.new(firm_location_params)
+
     @firm = Firm.new(firm_params)
     @firm.user = current_user
+    @firm.location = @location
     # byebug
-    if @firm.save
+    if @location.save && @firm.save
       respond_to do |format|
         format.html { redirect_to account_firms_path }
         format.js  # <-- will render `app/views/firms/create.js.erb`
@@ -32,7 +37,11 @@ class FirmsController < ApplicationController
   private
 
   def firm_params
-    params.require(:firm).permit(:name, :description, location_attributes: [:id, :address, :_destroy])
+    params.require(:firm).permit(:location_id, :name, :description)
+  end
+
+  def firm_location_params
+    params.require(:firm).require(:location).permit(:address)
   end
 
 

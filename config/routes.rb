@@ -5,9 +5,8 @@ Rails.application.routes.draw do
 
   # resources :users, only: [:show, :edit, :update]
   resources :locations, only: [:new, :create]
-  post 'location_firm' => 'locations#create_location_firm'
 
-  resources :firms, only: [:new]
+  resources :firms, only: [:new, :create]
 
   resources :markets, only: [:new, :create, :show]
 

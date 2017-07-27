@@ -2,26 +2,19 @@
   <h2>Nouvelle entreprise</h2>
   <div class="row">
     <div class="col-sm-6">
-      <%= simple_form_for location, url: location_firm_path, method: "POST", remote: true do |f| %>
+      <%= simple_form_for @firm, url: firms_path, method: "POST", remote: true do |f| %>
         <%= f.error_notification %>
-
-        <div class="firm-form">
-
-          <%= f.simple_fields_for :firms do |firm| %>
+        <br>
+        <%= f.input :name, placeholder: "Donnez un nom à cette entreprise", label: false, required: false, autofocus: true %>
+        <%= f.input :description, placeholder: "Description", label: false, input_html: { id: 'description'}, required: false, autofocus: true %>
+         <br>
+        <div class="nested-fields form-inputs" id="location-firm-form">
+          <%= f.simple_fields_for @location do |l| %>
+            <%= l.error_notification %>
             <br>
-            <%= render 'firms/firm_fields', f: firm %>
+            <%= render 'locations/location_fields', f: l %>
           <% end %>
-          <div class="links">
-            <%= link_to_add_association f, :firms do %>
-              <h4><i class="fa fa-plus" aria-hidden="true"></i></h4>
-            <% end %>
-          </div>
         </div>
-
-        <div class="form-inputs">
-          <%= f.input :address, placeholder: "Adresse détaillée", label: false, input_html: { id: 'address'}, required: true, autofocus: true %>
-        </div>
-
         <div>
           <%= f.button :submit, "Sauvegarder" %>
         </div>
@@ -29,3 +22,5 @@
     </div>
   </div>
 </div>
+
+
