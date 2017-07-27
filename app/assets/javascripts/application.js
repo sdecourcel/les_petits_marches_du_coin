@@ -3,4 +3,5 @@
 //= require bootstrap-sprockets
 //= require mapbox
 //= require mapbox_geocoder
+//= require cocoon
 //= require_tree .

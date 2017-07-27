@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem "geocoder"
+gem "cocoon"
 
 group :development, :test do
   gem 'binding_of_caller'

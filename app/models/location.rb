@@ -4,6 +4,8 @@ class Location < ApplicationRecord
   has_many :firms
   has_many :markets
 
+  # accepts_nested_attributes_for :firms, reject_if: :all_blank, allow_destroy: true
+
   validates :address, presence: true
   # validates :unique_name, presence: true, uniqueness: true
 
@@ -13,6 +15,7 @@ class Location < ApplicationRecord
 
   scope :market_places, -> { joins(:markets).where({ markets: { market_place: true } }) }
   scope :basket_places, -> { joins(markets: { suppliers: { firms: :products } } ).where({ products: { name: 'Paniers' } }) }
+  scope :user_locations, -> (user) { joins(:user).where(user: user) }
 
   private
 

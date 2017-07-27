@@ -1,0 +1,13 @@
+<% if @firm.errors.any? || @location.errors.any? %>
+  // Render new firm form with errors
+  $('#new_firm').html("<%= j render template: 'firms/new.html.erb', layout: false %>");
+<% else %>
+  // Create a paragraph for the new firm. But hide it.
+  var new_firm = $("<%= j render 'firms/firm', firm: @firm %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#firms').append(new_firm);
+  // Show the new review with an animation!
+  new_firm.slideDown();
+  // Reset the form
+  $('#new_firm').hide();
+<% end %>

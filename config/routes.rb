@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # resources :users, only: [:show, :edit, :update]
   resources :locations, only: [:new, :create]
+
   resources :firms, only: [:new, :create]
 
   resources :markets, only: [:new, :create, :show]
