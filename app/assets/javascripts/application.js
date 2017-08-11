@@ -4,4 +4,7 @@
 //= require mapbox
 //= require mapbox_geocoder
 //= require cocoon
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 //= require_tree .
