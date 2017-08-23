@@ -29,6 +29,20 @@ map.on('click', function (e) {
   document.getElementById('lng').innerHTML =
     // e.lngLat is the longitude, latitude geographical position of the event
     JSON.stringify(e.lngLat.lng);
+  //document.getElementById('address').innerHTML =
+});
+
+map.geocoderControl.addEventListener('change',function(){
+    alert('changed');
+map.geocoderControl.on('change', function (e) {
+  debugger;
+  document.getElementById('lat').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lat);
+  document.getElementById('lng').innerHTML =
+    // e.lngLat is the longitude, latitude geographical position of the event
+    JSON.stringify(e.lngLat.lng);
+  //document.getElementById('address').innerHTML =
 });
 
 // When value of geocoder control selected in autocomplete list

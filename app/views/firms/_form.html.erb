@@ -7,6 +7,7 @@
         <br>
         <%= f.input :name, placeholder: "Donnez un nom à cette entreprise", label: false, required: false, autofocus: true %>
         <%= f.input :description, placeholder: "Description", label: false, input_html: { id: 'description'}, required: false, autofocus: true %>
+        <%= f.input :photo, as: :attachinary %>
          <br>
         <div class="nested-fields form-inputs" id="location-firm-form">
           <%= f.simple_fields_for @location do |l| %>

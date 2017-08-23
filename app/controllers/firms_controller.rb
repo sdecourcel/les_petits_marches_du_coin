@@ -37,7 +37,7 @@ class FirmsController < ApplicationController
   private
 
   def firm_params
-    params.require(:firm).permit(:location_id, :name, :description)
+    params.require(:firm).permit(:location_id, :name, :description, :photo)
   end
 
   def firm_location_params
