@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
-  if Rails.env.staging ?
-    http_basic_athenticate_with name: "bio", password: "sante"
+  if Rails.env.staging || Rails.env.production ?
+    http_basic_authenticate_with name: "bio", password: "sante"
   end
 
   protect_from_forgery with: :exception
