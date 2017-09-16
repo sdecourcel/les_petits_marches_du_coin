@@ -83,3 +83,9 @@ production:
   database: les_petits_marches_du_coin_production
   username: les_petits_marches_du_coin
   password: <%= ENV['LES_PETITS_MARCHES_DU_COIN_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: les_petits_marches_du_coin_staging
+  username: les_petits_marches_du_coin
+  password: <%= ENV['les_petits_marches_du_coin_DATABASE_PASSWORD'] %>
